@@ -2,10 +2,12 @@ package ru.alex.jwtapplication.models;
 
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -31,6 +33,8 @@ public class Person {
     @Column(name = "role")
     private String role;
 
+    @OneToMany(mappedBy = "person")
+    private List<Password> passwordName;
     public void setId(Integer id) {
         this.id = id;
     }
